@@ -20,10 +20,10 @@ class SkillCell: UICollectionViewCell {
         return label
     }()
     
-    private let deleteButton: UIButton = {
+    public let deleteButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("✕", for: .normal)
-        button.tintColor = .red
+        button.setImage(Resourses.Images.cross, for: .normal)
+        button.tintColor = Resourses.Colors.textColor
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         return button
     }()
@@ -59,8 +59,8 @@ class SkillCell: UICollectionViewCell {
             skillLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             skillLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             skillLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            deleteButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+
+            deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             deleteButton.widthAnchor.constraint(equalToConstant: 20),
             deleteButton.heightAnchor.constraint(equalTo: deleteButton.widthAnchor)

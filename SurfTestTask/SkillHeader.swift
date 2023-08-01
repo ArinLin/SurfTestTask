@@ -9,6 +9,7 @@ import UIKit
 
 protocol SkillHeaderDelegate: AnyObject {
     func editButtonTapped()
+    func toggleEditingState()
 }
 
 final class SkillHeader: UICollectionReusableView {
@@ -58,6 +59,7 @@ final class SkillHeader: UICollectionReusableView {
     }
     
     @objc func editButtonTapped() {
+        delegate?.toggleEditingState()
         delegate?.editButtonTapped()
         switch buttonState {
         case .pencil:

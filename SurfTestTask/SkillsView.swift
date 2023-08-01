@@ -111,6 +111,7 @@ extension SkillsView: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         
         let skill = skills[indexPath.item]
         cell.configure(with: skill, isEditingEnabled: isEditingEnabled)
+        cell.deleteButton.isHidden = buttonState != .circle
         cell.delegate = self
         cell.backgroundColor = Resourses.Colors.background
         cell.layer.cornerRadius = 12
@@ -150,6 +151,9 @@ protocol SkillCellDelegate: AnyObject {
 }
 
 extension SkillsView: SkillHeaderDelegate {
+    func toggleEditingState() {
+               toggleEditing()
+           }
     func editButtonTapped() {
         addSkill()
     }
