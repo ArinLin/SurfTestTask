@@ -35,6 +35,7 @@ enum Resourses {
     }
     
     enum Images {
+        static var man = UIImage(named: "man")?.resized(to: CGSize(width: 120, height: 120))
         static var location = UIImage(named: "location")?.resized(to: CGSize(width: 16, height: 16))
         static var pencil = UIImage(named: "pencil")?.resized(to: CGSize(width: 24, height: 24))
         static var checkmark = UIImage(named: "checkmark")?.resized(to: CGSize(width: 24, height: 24))
