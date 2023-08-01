@@ -155,6 +155,8 @@ extension SkillsView: SkillHeaderDelegate {
                toggleEditing()
            }
     func editButtonTapped() {
-        addSkill()
+        if buttonState == .circle {
+            addSkill()
+        }
     }
 }
