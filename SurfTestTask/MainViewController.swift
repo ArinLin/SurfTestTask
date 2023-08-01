@@ -18,6 +18,19 @@ class MainViewController: UIViewController {
     
     private let userInfo = UserInfoView()
     
+    private let collection = SkillsView()
+    
+//    private let collection: UICollectionView = {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.scrollDirection = .vertical
+//        layout.minimumInteritemSpacing = 8
+//        layout.minimumLineSpacing = 8
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        collectionView.backgroundColor = .red
+//        collectionView.register(SkillCell.self, forCellWithReuseIdentifier: SkillCell.reuseIdentifier)
+//        return collectionView
+//    }()
+    
     
     // MARK: - LifeCycle
 
@@ -34,11 +47,13 @@ class MainViewController: UIViewController {
     private func setView() {
         view.addSubview(scrollView)
         scrollView.addSubview(userInfo)
+        scrollView.addSubview(collection)
     }
 
     private func setConstraints() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         userInfo.translatesAutoresizingMaskIntoConstraints = false
+        collection.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -52,6 +67,11 @@ class MainViewController: UIViewController {
             userInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             userInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             userInfo.heightAnchor.constraint(equalToConstant: 244),
+            
+            collection.topAnchor.constraint(equalTo: userInfo.bottomAnchor),
+            collection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collection.heightAnchor.constraint(equalToConstant: 600)
         ])
     }
 

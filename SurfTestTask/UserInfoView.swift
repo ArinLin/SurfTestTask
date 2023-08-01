@@ -88,12 +88,14 @@ class UserInfoView: UIView {
             super.init(frame: frame)
             setView()
             setConstraints()
+            backgroundColor = Resourses.Colors.background
         }
         
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
             setView()
             setConstraints()
+            backgroundColor = Resourses.Colors.background
         }
     
     private func setView() {
