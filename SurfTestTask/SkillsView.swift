@@ -24,6 +24,8 @@ class SkillsView: UIView {
         return collectionView
     }()
     
+    public weak var presentationDelegate: UIViewController?
+    
     private var skills: [String] = ["Swift", "iOS Development", "UI/UX Design"]
     private var isEditingEnabled = false
     
@@ -69,22 +71,21 @@ class SkillsView: UIView {
     
     // MARK: - Button settings
     private func addSkill() {
-            // Display a native alert to enter the skill name
             let alert = UIAlertController(title: "Добавить навык", message: nil, preferredStyle: .alert)
             alert.addTextField { textField in
                 textField.placeholder = "Введите название"
             }
             let addAction = UIAlertAction(title: "Добавить", style: .default) { [weak self] _ in
-                guard let textField = alert.textFields?.first, let skill = textField.text, !skill.isEmpty else {
-                    return
-                }
+                guard let textField = alert.textFields?.first,
+                        let skill = textField.text, !skill.isEmpty else { return }
                 self?.skills.append(skill)
                 self?.collectionView.reloadData()
             }
             let cancelAction = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
             alert.addAction(addAction)
             alert.addAction(cancelAction)
-            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
+            presentationDelegate!.present(alert, animated: true, completion: nil)
+//            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
 }
 
@@ -104,7 +105,7 @@ extension SkillsView: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
         cell.configure(with: skill, isEditingEnabled: isEditingEnabled)
         cell.delegate = self
         cell.backgroundColor = Resourses.Colors.background
-        cell.layer.cornerRadius = 15
+        cell.layer.cornerRadius = 12
         
         return cell
     }
@@ -114,15 +115,18 @@ extension SkillsView: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
             fatalError("Unable to dequeue HeaderView")
         }
         
-        // Конфигурируем кнопки
-        //                headerView.editButton.setTitle(Resourses.Texts.skills, for: .normal)
-        headerView.editButton.addTarget(self, action: #selector(SkillHeader.editButtonTapped), for: .touchUpInside)
-        
+        headerView.delegate = self
         return headerView
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let skill = skills[indexPath.item]
+        let size = skill.size(withAttributes: [.font: Resourses.Fonts.helveticaRegular(with: 14)])
+        return CGSize(width: size.width + 24, height: 44)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 24) 
+        return CGSize(width: collectionView.frame.width, height: 40)
     }
 }
 
@@ -139,7 +143,6 @@ protocol SkillCellDelegate: AnyObject {
 
 extension SkillsView: SkillHeaderDelegate {
     func editButtonTapped() {
-        // Call the addSkill function to show the alert
         addSkill()
     }
 }

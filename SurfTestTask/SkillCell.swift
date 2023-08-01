@@ -13,9 +13,10 @@ class SkillCell: UICollectionViewCell {
     
     private let skillLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = Resourses.Colors.textColor
         label.textAlignment = .center
         label.numberOfLines = 1
+        label.font = Resourses.Fonts.helveticaRegular(with: 14)
         return label
     }()
     

@@ -22,19 +22,19 @@ final class SkillHeader: UICollectionReusableView {
         return label
     }()
 
-    let editButton: UIButton = {
+    lazy var editButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(Resourses.Images.pencil, for: .normal)
         button.tintColor = Resourses.Colors.textColor
         button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         return button
     }()
-    
+    // hugging priority
     private lazy var hStack: UIStackView = {
         let hStack = UIStackView(arrangedSubviews: [label, editButton])
         hStack.axis = .horizontal
         hStack.spacing = 8
-        hStack.distribution = .fillEqually
+        hStack.distribution = .fillProportionally
         hStack.alignment = .center
         return hStack
     }()
@@ -49,6 +49,10 @@ final class SkillHeader: UICollectionReusableView {
         super.init(frame: .zero)
         setupViews()
         constraintViews()
+    }
+    
+    @objc func editButtonTapped() {
+        delegate?.editButtonTapped()
     }
 }
 
@@ -69,8 +73,8 @@ private extension SkillHeader {
         ])
     }
 }
-extension SkillHeader {
-    @objc func editButtonTapped() {
-            delegate?.editButtonTapped()
-        }
-}
+//extension SkillHeader {
+//    @objc func editButtonTapped() {
+//        delegate?.editButtonTapped()
+//    }
+//}

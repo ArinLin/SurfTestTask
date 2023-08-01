@@ -40,6 +40,8 @@ class MainViewController: UIViewController {
         setView()
         setConstraints()
         
+        collection.presentationDelegate = self
+        
         view.backgroundColor = Resourses.Colors.background
         navigationItem.title = Resourses.Texts.profile
     }
