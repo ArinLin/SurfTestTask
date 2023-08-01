@@ -7,8 +7,15 @@
 
 import UIKit
 
+enum ButtonState {
+    case pencil
+    case circle
+}
+
 class SkillsView: UIView {
+    
     // MARK: - Variables
+    
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -28,6 +35,7 @@ class SkillsView: UIView {
     
     private var skills: [String] = ["Swift", "iOS Development", "UI/UX Design"]
     private var isEditingEnabled = false
+    private var buttonState: ButtonState = .pencil
     
     // MARK: - LifeCycle
     
@@ -47,6 +55,7 @@ class SkillsView: UIView {
     
     func toggleEditing() {
         isEditingEnabled = !isEditingEnabled
+        buttonState = isEditingEnabled ? .circle : .pencil
         collectionView.reloadData()
     }
     
@@ -85,7 +94,6 @@ class SkillsView: UIView {
             alert.addAction(addAction)
             alert.addAction(cancelAction)
             presentationDelegate!.present(alert, animated: true, completion: nil)
-//            UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
         }
 }
 

@@ -16,6 +16,12 @@ final class SkillHeader: UICollectionReusableView {
     
     weak var delegate: SkillHeaderDelegate?
     
+    var buttonState: ButtonState = .pencil {
+            didSet {
+                setButtonImageForState()
+            }
+        }
+    
     let label: UILabel = {
         let label = UILabel()
         label.text = Resourses.Texts.skills
@@ -53,6 +59,22 @@ final class SkillHeader: UICollectionReusableView {
     
     @objc func editButtonTapped() {
         delegate?.editButtonTapped()
+        switch buttonState {
+        case .pencil:
+            buttonState = .circle
+        case .circle:
+            buttonState = .pencil
+        }
+        setButtonImageForState()
+    }
+    
+    private func setButtonImageForState() {
+        switch buttonState {
+        case .pencil:
+            editButton.setImage(Resourses.Images.pencil, for: .normal)
+        case .circle:
+            editButton.setImage(Resourses.Images.checkmark, for: .normal)
+        }
     }
 }
 
