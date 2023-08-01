@@ -59,12 +59,10 @@ final class SkillHeader: UICollectionReusableView {
 private extension SkillHeader {
     func setupViews() {
         addSubview(hStack)
-//        addSubview(editButton)
     }
 
     func constraintViews() {
         hStack.translatesAutoresizingMaskIntoConstraints = false
-//        editButton.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             hStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -73,8 +71,3 @@ private extension SkillHeader {
         ])
     }
 }
-//extension SkillHeader {
-//    @objc func editButtonTapped() {
-//        delegate?.editButtonTapped()
-//    }
-//}

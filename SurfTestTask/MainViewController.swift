@@ -20,16 +20,7 @@ class MainViewController: UIViewController {
     
     private let collection = SkillsView()
     
-//    private let collection: UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.scrollDirection = .vertical
-//        layout.minimumInteritemSpacing = 8
-//        layout.minimumLineSpacing = 8
-//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        collectionView.backgroundColor = .red
-//        collectionView.register(SkillCell.self, forCellWithReuseIdentifier: SkillCell.reuseIdentifier)
-//        return collectionView
-//    }()
+    private let aboutView = AboutView()
     
     
     // MARK: - LifeCycle
@@ -50,19 +41,21 @@ class MainViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(userInfo)
         scrollView.addSubview(collection)
+        scrollView.addSubview(aboutView)
     }
 
     private func setConstraints() {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         userInfo.translatesAutoresizingMaskIntoConstraints = false
         collection.translatesAutoresizingMaskIntoConstraints = false
+        aboutView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
-            scrollView.heightAnchor.constraint(equalTo:view.layoutMarginsGuide.heightAnchor),
+            scrollView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor),
             scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
             
             userInfo.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -73,7 +66,12 @@ class MainViewController: UIViewController {
             collection.topAnchor.constraint(equalTo: userInfo.bottomAnchor),
             collection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collection.heightAnchor.constraint(equalToConstant: 600)
+            collection.heightAnchor.constraint(equalToConstant: 300),
+            
+            aboutView.topAnchor.constraint(equalTo: collection.bottomAnchor, constant: 24),
+            aboutView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            aboutView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            aboutView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -100),
         ])
     }
 

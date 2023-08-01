@@ -30,7 +30,6 @@ class UserInfoView: UIView {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .label
         label.textAlignment = .center
         label.textColor = Resourses.Colors.textColor
         label.font = Resourses.Fonts.helveticaRegular(with: 24)
