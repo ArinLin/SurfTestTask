@@ -11,6 +11,12 @@ class MainViewController: UIViewController {
     
     // MARK: - Variables
     
+    private let navBar: UINavigationController = {
+        let nav = UINavigationController()
+        nav.toolbar.backgroundColor = .blue
+        return nav
+    }()
+    
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
         scroll.backgroundColor = .white
@@ -35,7 +41,11 @@ class MainViewController: UIViewController {
         collection.presentationDelegate = self
         
         view.backgroundColor = Resourses.Colors.background
+//        view.backgroundColor = .white
         navigationItem.title = Resourses.Texts.profile
+        
+        navigationController?.navigationBar.backgroundColor = Resourses.Colors.background
+//        navigationItem.titleView?.backgroundColor = Resourses.Colors.background
     }
     
     private func setView() {
@@ -63,11 +73,13 @@ class MainViewController: UIViewController {
             userInfo.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             userInfo.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             userInfo.heightAnchor.constraint(equalToConstant: 244),
+            userInfo.widthAnchor.constraint(equalToConstant: 273),
             
-            collection.topAnchor.constraint(equalTo: userInfo.bottomAnchor),
+            collection.topAnchor.constraint(equalTo: userInfo.bottomAnchor, constant: 12),
             collection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collection.heightAnchor.constraint(equalToConstant: 300),
+            collection.heightAnchor.constraint(equalToConstant: 308),
+            collection.widthAnchor.constraint(equalToConstant: 343),
             
             aboutView.topAnchor.constraint(equalTo: collection.bottomAnchor, constant: 24),
             aboutView.leadingAnchor.constraint(equalTo: view.leadingAnchor),

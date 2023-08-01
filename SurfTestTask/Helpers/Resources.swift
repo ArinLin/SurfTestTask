@@ -13,8 +13,12 @@ enum Resourses {
             UIFont(name: "Helvetica", size: size) ?? UIFont()
         }
         
+        static func helveticaBold(with size: CGFloat) -> UIFont {
+            UIFont(name: "Helvetica-Bold", size: size) ?? UIFont()
+        }
+        
         static func SFProDisplay(with size: CGFloat) -> UIFont {
-            UIFont(name: "14_20_Regular SF", size: size) ?? UIFont()
+            UIFont(name: "SFProText-Regular", size: size) ?? UIFont()
         }
     }
     

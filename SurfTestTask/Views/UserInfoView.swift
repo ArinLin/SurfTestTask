@@ -11,11 +11,6 @@ class UserInfoView: UIView {
     
     // MARK: - Variables
     
-    private let scrollView: UIScrollView = {
-        let scroll = UIScrollView()
-        return scroll
-    }()
-    
     private let contentView: UIView = {
         let view = UIView()
         return view
@@ -32,9 +27,9 @@ class UserInfoView: UIView {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = Resourses.Colors.textColor
-        label.font = Resourses.Fonts.helveticaRegular(with: 24)
+        label.font = Resourses.Fonts.helveticaBold(with: 24)
         label.text = Resourses.Texts.name
-        label.numberOfLines = 1
+        label.numberOfLines = 2
         return label
     }()
     
@@ -62,6 +57,7 @@ class UserInfoView: UIView {
         label.textColor = Resourses.Colors.textDescription
         label.font = Resourses.Fonts.helveticaRegular(with: 14)
         label.text = Resourses.Texts.location
+        label.numberOfLines = 1
         return label
     }()
     
@@ -83,6 +79,8 @@ class UserInfoView: UIView {
         return vStack
     }()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
             super.init(frame: frame)
             setView()
@@ -97,32 +95,25 @@ class UserInfoView: UIView {
             backgroundColor = Resourses.Colors.background
         }
     
+    // MARK: - ViewSettings
+    
     private func setView() {
-        addSubview(scrollView)
-        scrollView.addSubview(contentView)
+        addSubview(contentView)
         contentView.addSubview(photo)
         contentView.addSubview(vStack)
     }
 
     private func setConstraints() {
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         contentView.translatesAutoresizingMaskIntoConstraints = false
         photo.translatesAutoresizingMaskIntoConstraints = false
         vStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-            scrollView.heightAnchor.constraint(equalTo: layoutMarginsGuide.heightAnchor),
-            scrollView.widthAnchor.constraint(equalTo: widthAnchor),
-            
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            contentView.widthAnchor.constraint(equalTo: widthAnchor),
             
             photo.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             photo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),

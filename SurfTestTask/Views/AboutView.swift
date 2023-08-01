@@ -9,6 +9,8 @@ import UIKit
 
 class AboutView: UIView {
     
+    // MARK: - Variables
+    
     private let aboutLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -37,6 +39,8 @@ class AboutView: UIView {
         return vStack
     }()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -49,6 +53,8 @@ class AboutView: UIView {
         setConstraints()
         backgroundColor = .white
     }
+    
+    // MARK: - ViewSettings
     
     private func setView() {
         addSubview(vStack)

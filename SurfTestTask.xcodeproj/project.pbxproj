@@ -47,6 +47,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		845AC7EE2A798FBE00089971 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				84FE60EE2A78EA5000D25113 /* AppDelegate.swift */,
+				84FE60F02A78EA5000D25113 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		845AC7EF2A798FD000089971 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				845AC7E82A7915F700089971 /* SkillCell.swift */,
+				845AC7EA2A79197900089971 /* SkillHeader.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		845AC7F02A798FDE00089971 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				845AC7E42A7907D800089971 /* UserInfoView.swift */,
+				845AC7EF2A798FD000089971 /* Components */,
+				845AC7E62A7911F400089971 /* SkillsView.swift */,
+				845AC7EC2A7948C900089971 /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		845AC7F12A798FEA00089971 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84FE60F22A78EA5000D25113 /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		845AC7F22A798FF300089971 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				845AC7E02A78F5FA00089971 /* Resources.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		84FE60E22A78EA5000D25113 = {
 			isa = PBXGroup;
 			children = (
@@ -66,15 +111,10 @@
 		84FE60ED2A78EA5000D25113 /* SurfTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				84FE60EE2A78EA5000D25113 /* AppDelegate.swift */,
-				84FE60F02A78EA5000D25113 /* SceneDelegate.swift */,
-				84FE60F22A78EA5000D25113 /* MainViewController.swift */,
-				845AC7E42A7907D800089971 /* UserInfoView.swift */,
-				845AC7E82A7915F700089971 /* SkillCell.swift */,
-				845AC7EA2A79197900089971 /* SkillHeader.swift */,
-				845AC7E62A7911F400089971 /* SkillsView.swift */,
-				845AC7EC2A7948C900089971 /* AboutView.swift */,
-				845AC7E02A78F5FA00089971 /* Resources.swift */,
+				845AC7EE2A798FBE00089971 /* Application */,
+				845AC7F12A798FEA00089971 /* Controllers */,
+				845AC7F02A798FDE00089971 /* Views */,
+				845AC7F22A798FF300089971 /* Helpers */,
 				84FE60F72A78EA5200D25113 /* Assets.xcassets */,
 				84FE60F92A78EA5200D25113 /* LaunchScreen.storyboard */,
 				84FE60FC2A78EA5200D25113 /* Info.plist */,

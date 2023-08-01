@@ -13,6 +13,9 @@ protocol SkillHeaderDelegate: AnyObject {
 }
 
 final class SkillHeader: UICollectionReusableView {
+    
+    // MARK: - Variables
+    
     static let reuseID = "SkillHeader"
     
     weak var delegate: SkillHeaderDelegate?
@@ -46,6 +49,8 @@ final class SkillHeader: UICollectionReusableView {
         return hStack
     }()
 
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -57,6 +62,8 @@ final class SkillHeader: UICollectionReusableView {
         setupViews()
         constraintViews()
     }
+    
+    // MARK: - ButtonSettings
     
     @objc func editButtonTapped() {
         delegate?.toggleEditingState()
@@ -78,9 +85,9 @@ final class SkillHeader: UICollectionReusableView {
             editButton.setImage(Resourses.Images.checkmark, for: .normal)
         }
     }
-}
+    
+    // MARK: - ViewSettings
 
-private extension SkillHeader {
     func setupViews() {
         addSubview(hStack)
     }
@@ -89,7 +96,7 @@ private extension SkillHeader {
         hStack.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            hStack.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            hStack.leadingAnchor.constraint(equalTo: leadingAnchor),
             hStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
             hStack.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])

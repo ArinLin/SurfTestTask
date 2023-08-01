@@ -8,6 +8,9 @@
 import UIKit
 
 class SkillCell: UICollectionViewCell {
+    
+    // MARK: - Variables
+    
     static let reuseIdentifier = "SkillCell"
     private var isEditingEnabled = false
     
@@ -32,6 +35,8 @@ class SkillCell: UICollectionViewCell {
     private var cellIndex: Int = 0
     private var deleteButtonWidthConstraint: NSLayoutConstraint?
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setView()
@@ -43,6 +48,8 @@ class SkillCell: UICollectionViewCell {
         setView()
         setConstraints()
     }
+    
+    // MARK: - ViewSettings
     
     private func setView() {
         contentView.addSubview(skillLabel)
@@ -70,15 +77,17 @@ class SkillCell: UICollectionViewCell {
         ])
     }
     
-    @objc private func deleteButtonTapped() {
-        delegate?.deleteSkill(at: cellIndex)
-    }
-    
     func configure(with skill: String, isEditingEnabled: Bool) {
         skillLabel.text = skill
         self.isEditingEnabled = isEditingEnabled
         deleteButton.isHidden = !isEditingEnabled
         deleteButtonWidthConstraint?.constant = isEditingEnabled ? 20 : 0
+    }
+    
+    // MARK: - ButtonSettings
+    
+    @objc private func deleteButtonTapped() {
+        delegate?.deleteSkill(at: cellIndex)
     }
 }
 
