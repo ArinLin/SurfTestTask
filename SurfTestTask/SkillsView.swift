@@ -80,7 +80,7 @@ class SkillsView: UIView {
     
     // MARK: - Button settings
     private func addSkill() {
-            let alert = UIAlertController(title: "Добавить навык", message: nil, preferredStyle: .alert)
+            let alert = UIAlertController(title: "Добавить навык", message: "Введите название навыка которым вы владеете", preferredStyle: .alert)
             alert.addTextField { textField in
                 textField.placeholder = "Введите название"
             }
@@ -97,7 +97,7 @@ class SkillsView: UIView {
         }
 }
 
-// MARK: - Extensions
+// MARK: - Collection Extensions
 
 extension SkillsView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -131,13 +131,16 @@ extension SkillsView: UICollectionViewDataSource, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let skill = skills[indexPath.item]
         let size = skill.size(withAttributes: [.font: Resourses.Fonts.helveticaRegular(with: 14)])
-        return CGSize(width: size.width + 24, height: 44)
+        let deleteButtonWidth: CGFloat = buttonState == .circle ? 20 : 0
+        return CGSize(width: size.width + 24 + deleteButtonWidth, height: 44)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 40)
     }
 }
+
+// MARK: - View Extensions
 
 extension SkillsView: SkillCellDelegate {
     func deleteSkill(at index: Int) {
@@ -146,17 +149,17 @@ extension SkillsView: SkillCellDelegate {
     }
 }
 
-protocol SkillCellDelegate: AnyObject {
-    func deleteSkill(at index: Int)
-}
-
 extension SkillsView: SkillHeaderDelegate {
     func toggleEditingState() {
-               toggleEditing()
-           }
+        toggleEditing()
+    }
     func editButtonTapped() {
         if buttonState == .circle {
             addSkill()
         }
     }
+}
+
+protocol SkillCellDelegate: AnyObject {
+    func deleteSkill(at index: Int)
 }

@@ -13,6 +13,7 @@ class MainViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scroll = UIScrollView()
+        scroll.backgroundColor = .white
         return scroll
     }()
     

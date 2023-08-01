@@ -30,6 +30,7 @@ class SkillCell: UICollectionViewCell {
     
     weak var delegate: SkillCellDelegate?
     private var cellIndex: Int = 0
+    private var deleteButtonWidthConstraint: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,16 +55,18 @@ class SkillCell: UICollectionViewCell {
         skillLabel.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
         
+        deleteButtonWidthConstraint = deleteButton.widthAnchor.constraint(equalToConstant: 0)
+        
         NSLayoutConstraint.activate([
             skillLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             skillLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            skillLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            skillLabel.trailingAnchor.constraint(equalTo: deleteButton.leadingAnchor),
             skillLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
 
             deleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            deleteButton.widthAnchor.constraint(equalToConstant: 20),
-            deleteButton.heightAnchor.constraint(equalTo: deleteButton.widthAnchor)
+            deleteButton.heightAnchor.constraint(equalTo: deleteButton.widthAnchor),
+            deleteButtonWidthConstraint!
         ])
     }
     
@@ -75,6 +78,7 @@ class SkillCell: UICollectionViewCell {
         skillLabel.text = skill
         self.isEditingEnabled = isEditingEnabled
         deleteButton.isHidden = !isEditingEnabled
+        deleteButtonWidthConstraint?.constant = isEditingEnabled ? 20 : 0
     }
 }
 

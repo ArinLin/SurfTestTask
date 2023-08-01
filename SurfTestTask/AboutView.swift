@@ -41,7 +41,6 @@ class AboutView: UIView {
         super.init(frame: frame)
         setView()
         setConstraints()
-        backgroundColor = .white
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +52,7 @@ class AboutView: UIView {
     
     private func setView() {
         addSubview(vStack)
+        vStack.backgroundColor = .white
     }
     
     private func setConstraints() {
